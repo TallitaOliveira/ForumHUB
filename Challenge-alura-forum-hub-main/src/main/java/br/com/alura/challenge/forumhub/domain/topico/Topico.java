@@ -1,6 +1,6 @@
 package br.com.alura.challenge.forumhub.domain.topico;
 
-import br.com.alura.challenge.forumhub.domain.curso.Curso;
+import br.com.alura.challenge.forumhub.domain.categoria.Categorias;
 import br.com.alura.challenge.forumhub.domain.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.*;
@@ -34,15 +34,15 @@ public class Topico {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "curso_id")
-    private Curso curso;
+    private Categorias categorias;
 
     private Boolean ativo;
 
-    public Topico(String titulo, String mensagem, Usuario autor, Curso curso) {
+    public Topico(String titulo, String mensagem, Usuario autor, Categorias categorias) {
         this.titulo = titulo;
         this.mensagem = mensagem;
         this.autor = autor;
-        this.curso = curso;
+        this.categorias = categorias;
         this.dataCriacao = LocalDateTime.now();
         this.status = StatusTopico.NAO_RESOLVIDO;
     }

@@ -1,11 +1,11 @@
-package br.com.alura.challenge.forumhub.services;
+package br.com.alura.challenge.forumhub.service;
 
-import br.com.alura.challenge.forumhub.domain.curso.Curso;
+import br.com.alura.challenge.forumhub.domain.categoria.Categorias;
 import br.com.alura.challenge.forumhub.domain.topico.*;
 import br.com.alura.challenge.forumhub.domain.usuario.Usuario;
-import br.com.alura.challenge.forumhub.repositories.CursoRepository;
-import br.com.alura.challenge.forumhub.repositories.TopicosRepository;
-import br.com.alura.challenge.forumhub.repositories.UsuarioRepository;
+import br.com.alura.challenge.forumhub.repository.CategoriasRepository;
+import br.com.alura.challenge.forumhub.repository.TopicosRepository;
+import br.com.alura.challenge.forumhub.repository.UsuarioRepository;
 import jakarta.persistence.EntityNotFoundException;
 
 import org.springframework.data.domain.Page;
@@ -18,12 +18,12 @@ public class TopicoService {
 
     private final TopicosRepository topicoRepository;
     private final UsuarioRepository usuarioRepository;
-    private final CursoRepository cursoRepository;
+    private final CategoriasRepository categoriasRepository;
 
-    public TopicoService(TopicosRepository topicoRepository, UsuarioRepository usuarioRepository, CursoRepository cursoRepository) {
+    public TopicoService(TopicosRepository topicoRepository, UsuarioRepository usuarioRepository, CategoriasRepository categoriasRepository) {
         this.topicoRepository = topicoRepository;
         this.usuarioRepository = usuarioRepository;
-        this.cursoRepository = cursoRepository;
+        this.categoriasRepository = categoriasRepository;
     }
 
 
@@ -32,9 +32,9 @@ public class TopicoService {
         validarDuplicidade(dados.titulo(), dados.mensagem());
 
         Usuario autor = buscarUsuarioPorId(dados.idAutor());
-        Curso curso = buscarCursoPorId(dados.idCurso());
+        Categorias categorias = buscarCursoPorId(dados.idCurso());
 
-        Topico topico = new Topico(dados.titulo(), dados.mensagem(), autor, curso);
+        Topico topico = new Topico(dados.titulo(), dados.mensagem(), autor, categorias);
         topicoRepository.save(topico);
 
         return new DetalhamentoDadosTopico(topico);
@@ -82,8 +82,8 @@ public class TopicoService {
                 .orElseThrow(() -> new EntityNotFoundException("Autor com id " + idAutor + " não encontrado."));
     }
 
-    private Curso buscarCursoPorId(Long idCurso) {
-        return cursoRepository.findById(idCurso)
+    private Categorias buscarCursoPorId(Long idCurso) {
+        return categoriasRepository.findById(idCurso)
                 .orElseThrow(() -> new EntityNotFoundException("Curso com id " + idCurso + " não encontrado."));
     }
 

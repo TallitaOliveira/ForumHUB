@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.List;
 
 @RestControllerAdvice
-public class TratadorDeErros {
+public class TratarErros {
 
 
     @ExceptionHandler(EntityNotFoundException.class)

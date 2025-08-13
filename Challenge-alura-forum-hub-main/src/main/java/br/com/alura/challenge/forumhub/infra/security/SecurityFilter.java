@@ -1,5 +1,5 @@
 package br.com.alura.challenge.forumhub.infra.security;
-import br.com.alura.challenge.forumhub.repositories.UsuarioRepository;
+import br.com.alura.challenge.forumhub.repository.UsuarioRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,7 +16,7 @@ import java.io.IOException;
 public class SecurityFilter extends OncePerRequestFilter {
 
     @Autowired
-    private TokenService tokenService;
+    private JwtTokenService jwtTokenService;
 
     @Autowired
     private UsuarioRepository repository;
@@ -27,7 +27,7 @@ public class SecurityFilter extends OncePerRequestFilter {
 
 
         if(tokenJWT != null) {
-            var subject = tokenService.getSubject(tokenJWT);
+            var subject = jwtTokenService.getSubject(tokenJWT);
             var usuario = repository.findByEmail(subject);
 
             var authentication = new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());

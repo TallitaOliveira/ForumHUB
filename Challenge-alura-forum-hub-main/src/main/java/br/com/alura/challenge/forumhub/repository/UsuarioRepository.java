@@ -1,4 +1,4 @@
-package br.com.alura.challenge.forumhub.repositories;
+package br.com.alura.challenge.forumhub.repository;
 
 import br.com.alura.challenge.forumhub.domain.usuario.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;

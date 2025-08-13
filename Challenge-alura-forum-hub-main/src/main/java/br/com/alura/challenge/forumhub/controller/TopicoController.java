@@ -1,10 +1,10 @@
-package br.com.alura.challenge.forumhub.controllers;
+package br.com.alura.challenge.forumhub.controller;
 
 import br.com.alura.challenge.forumhub.domain.topico.AtualizacaoDadosTopico;
 import br.com.alura.challenge.forumhub.domain.topico.CadastroDadosTopico;
 import br.com.alura.challenge.forumhub.domain.topico.DetalhamentoDadosTopico;
 import br.com.alura.challenge.forumhub.domain.topico.ListagemDadosTopico;
-import br.com.alura.challenge.forumhub.services.TopicoService;
+import br.com.alura.challenge.forumhub.service.TopicoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,7 +19,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping("/topicos")
-public class TopicosController {
+public class TopicoController {
 
     @Autowired
     private TopicoService topicoService;
