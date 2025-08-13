@@ -1,0 +1,52 @@
+# ===================================================================
+# Arquivos e pastas de IDEs
+# Mantenha as seções que você e seu time usam.
+# ===================================================================
+
+### IntelliJ IDEA ###
+.idea/
+*.iml
+*.ipr
+*.iws
+
+### VS Code ###
+.vscode/
+
+### Spring Tool Suite (STS) / Eclipse ###
+.settings/
+.apt_generated
+.classpath
+.factorypath
+.project
+.springBeans
+.sts4-cache/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+
+# ===================================================================
+# Arquivos e pastas de Build (Maven/Gradle)
+# ===================================================================
+/target/
+/build/
+/out/
+
+
+# ===================================================================
+# Diversos
+# ===================================================================
+
+# Logs
+*.log
+
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos temporários
+*~
